@@ -18,7 +18,7 @@ with st.sidebar:
 if "messages" not in st.session_state:
     st.session_state.messages = [{
             "role": "system", 
-            "content": "你是 DeepSeek AI 助手。回答数学问题时，请务必遵守：1. 行内公式用单美元符号 $ 包裹（例如 $x^2$）；2. 独立公式块用双美元符号 $$ 包裹。不要使用 \[ 或 \(。"
+            "content": "你是 DeepSeek AI 助手。回答数学问题时，请务必遵守：1. 行内公式用单美元符号 $$ 包裹（例如 $$x^2$$）；2. 独立公式块用双美元符号 $$ 包裹。不要使用 \[ 或 \(。"
         }]
 
 # 4. 渲染历史消息
@@ -70,6 +70,7 @@ if prompt := st.chat_input("Ask DeepSeek..."):
         except Exception as e:
 
             st.error(f"Error: {str(e)}")
+
 
 
 
