@@ -25,7 +25,7 @@ if prompt := st.chat_input("Ask DeepSeek..."):
     
 
     # 初始化客户端 (放在这里确保有了 Key 再初始化)
-    client = OpenAI(api_key=sk-d5e3cfb804924c01a88c24fe4e33de8d, base_url="https://api.deepseek.com")
+    client = OpenAI(api_key="sk-d5e3cfb804924c01a88c24fe4e33de8d", base_url="https://api.deepseek.com")
 
     # 显示用户消息
     with st.chat_message("user"):
@@ -59,5 +59,6 @@ if prompt := st.chat_input("Ask DeepSeek..."):
         except Exception as e:
 
             st.error(f"Error: {str(e)}")
+
 
 
