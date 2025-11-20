@@ -6,7 +6,13 @@ st.set_page_config(page_title="AI Assistant", page_icon="🤖")
 st.markdown("<h1 style='text-align: center;'>AI Assistant</h1>", unsafe_allow_html=True)
 
 # 2. 侧边栏配置
-
+with st.sidebar:
+    # ... 原有的 API Key 代码 ...
+    
+    # 👇 新增这个按钮
+    if st.button("🗑️ 清空对话"):
+        st.session_state.messages = [] # 清空列表
+        st.rerun() # 强制刷新页面
 
 # 3. 初始化历史记录 (统一使用 "messages" 复数)
 if "messages" not in st.session_state:
@@ -64,6 +70,7 @@ if prompt := st.chat_input("Ask DeepSeek..."):
         except Exception as e:
 
             st.error(f"Error: {str(e)}")
+
 
 
 
