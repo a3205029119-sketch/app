@@ -6,10 +6,7 @@ st.set_page_config(page_title="AI Assistant", page_icon="🤖")
 st.markdown("<h1 style='text-align: center;'>AI Assistant</h1>", unsafe_allow_html=True)
 
 # 2. 侧边栏配置
-with st.sidebar:
-    st.markdown("# Configuration")
-    api_key = st.text_input("Please enter API Key", type="password")
-    st.markdown("[Click here to get API](https://platform.deepseek.com/)")
+
 
 # 3. 初始化历史记录 (统一使用 "messages" 复数)
 if "messages" not in st.session_state:
@@ -25,12 +22,10 @@ for msg in st.session_state.messages:
 if prompt := st.chat_input("Ask DeepSeek..."):
 
     # 检查 API Key 是否存在
-    if not api_key:
-        st.info("Please enter your API Key in the sidebar first.")
-        st.stop()
+    
 
     # 初始化客户端 (放在这里确保有了 Key 再初始化)
-    client = OpenAI(api_key=api_key, base_url="https://api.deepseek.com")
+    client = OpenAI(api_key=sk-d5e3cfb804924c01a88c24fe4e33de8d, base_url="https://api.deepseek.com")
 
     # 显示用户消息
     with st.chat_message("user"):
@@ -64,4 +59,5 @@ if prompt := st.chat_input("Ask DeepSeek..."):
         except Exception as e:
 
             st.error(f"Error: {str(e)}")
+
 
