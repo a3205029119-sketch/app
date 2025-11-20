@@ -18,6 +18,8 @@ if "messages" not in st.session_state:
 # 4. 渲染历史消息
 for msg in st.session_state.messages:
     # 修正：字典取值用 ["role"]
+    if msg["role"] == "system":
+        continue
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
@@ -62,6 +64,7 @@ if prompt := st.chat_input("Ask DeepSeek..."):
         except Exception as e:
 
             st.error(f"Error: {str(e)}")
+
 
 
 
